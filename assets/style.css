@@ -40,6 +40,7 @@ body {
 
 .social-link img {
 	width: 20px;
+	height: 20px;
 }
 
 #about {
@@ -70,6 +71,11 @@ body {
 .picture img {
 	width: 100%;
 
+}
+
+.picture.left img{
+	width: 514px;
+	height: 514px;
 }
 #about-me {
 	flex: 2
@@ -210,6 +216,11 @@ body {
 	bottom: 0;
 	right: 0;
 	z-index: -1;
+}
+
+.picture.right img{
+	width: 418px;
+	height: 418px;
 }
 .form-container {
 	flex : 2;
