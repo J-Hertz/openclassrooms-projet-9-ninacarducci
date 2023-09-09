@@ -99,6 +99,10 @@ body {
 #gallery {
 	/*	min-height: 100vh; */
 }
+
+.gallery{
+	display: block;
+}
 .title{
 	text-align: center;
 	padding-block: 2em;
