@@ -115,6 +115,11 @@ body {
 	background-color: #4D481E;
 	border-radius:0 ;
 }
+
+.nav-link:hover{
+	cursor: pointer;
+}
+
 .nav-pills .nav-link {
 	color: #000
 }
@@ -257,6 +262,10 @@ form textarea {
 input[type="submit"] {
 	background-color: #BEB45A;
 	padding: .5em 1em
+}
+
+.display-none{
+	display: none;
 }
 
 @media all and (max-width: 1180px) {
