@@ -47,7 +47,7 @@ function createFilterButtons() {
   // Récupération des attributs de données "data-gallery-tag"
   const filterTags = Array.from(new Set(Array.from(gallery.querySelectorAll(".gallery-item")).map(item => item.getAttribute("data-gallery-tag"))));
 
-  // Crée des boutons pour chaque attribut unique
+  // Crée des boutons pour chaque attribut 
   filterTags.forEach(tag => {
     const button = createFilterButton(tag);
     button.addEventListener("click", () => {
@@ -106,6 +106,7 @@ function filterImages(tag) {
     }
   });
 }
+
 // Fonction pour démarrer l'application
 function start() {
   createGallery();
