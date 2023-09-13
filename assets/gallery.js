@@ -204,8 +204,6 @@ function handlePrev() {
   const galleryItems = document.querySelectorAll('.gallery-item')
   const currentImageSrc = modalImage.src
 
-  console.log(galleryItems[1].src)
-
   let currentIndex = -1
   galleryItems.forEach((item, index) => {
     if (item.src === currentImageSrc) {
@@ -215,10 +213,27 @@ function handlePrev() {
   })
 
   if (currentIndex !== -1) {
-    const prevIndex =
-      (currentIndex - 1 + galleryItems.length) % galleryItems.length
-    const prevImageSrc = galleryItems[prevIndex].src
-    modalImage.src = prevImageSrc
+    let prevIndex = currentIndex - 1
+    // Cherchez la première image précédente non masquée en bouclant vers l'arrière
+    while (prevIndex >= 0) {
+      if (galleryItems[prevIndex].style.display !== 'none') {
+        const prevImageSrc = galleryItems[prevIndex].src
+        modalImage.src = prevImageSrc
+        return
+      }
+      prevIndex--
+    }
+
+    // Si aucune image précédente n'est trouvée, affichez la dernière image non masquée
+    prevIndex = galleryItems.length - 1
+    while (prevIndex > currentIndex) {
+      if (galleryItems[prevIndex].style.display !== 'none') {
+        const prevImageSrc = galleryItems[prevIndex].src
+        modalImage.src = prevImageSrc
+        return
+      }
+      prevIndex--
+    }
   }
 }
 
@@ -237,9 +252,27 @@ function handleNext() {
   })
 
   if (currentIndex !== -1) {
-    const nextIndex = (currentIndex + 1) % galleryItems.length
-    const nextImageSrc = galleryItems[nextIndex].src
-    modalImage.src = nextImageSrc
+    let nextIndex = currentIndex + 1
+    // Cherchez la première image suivante non masquée en bouclant vers l'avant
+    while (nextIndex < galleryItems.length) {
+      if (galleryItems[nextIndex].style.display !== 'none') {
+        const nextImageSrc = galleryItems[nextIndex].src
+        modalImage.src = nextImageSrc
+        return
+      }
+      nextIndex++
+    }
+
+    // Si aucune image suivante n'est trouvée, affichez la première image non masquée
+    nextIndex = 0
+    while (nextIndex < currentIndex) {
+      if (galleryItems[nextIndex].style.display !== 'none') {
+        const nextImageSrc = galleryItems[nextIndex].src
+        modalImage.src = nextImageSrc
+        return
+      }
+      nextIndex++
+    }
   }
 }
 
