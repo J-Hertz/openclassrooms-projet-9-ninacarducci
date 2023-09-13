@@ -200,12 +200,47 @@ document.addEventListener('click', function (event) {
 
 // Fonction pour gérer le bouton Précédent
 function handlePrev() {
-  console.log('totoprev')
+  const modalImage = document.querySelector('.lightboxImage')
+  const galleryItems = document.querySelectorAll('.gallery-item')
+  const currentImageSrc = modalImage.src
+
+  console.log(galleryItems[1].src)
+
+  let currentIndex = -1
+  galleryItems.forEach((item, index) => {
+    if (item.src === currentImageSrc) {
+      currentIndex = index
+      return
+    }
+  })
+
+  if (currentIndex !== -1) {
+    const prevIndex =
+      (currentIndex - 1 + galleryItems.length) % galleryItems.length
+    const prevImageSrc = galleryItems[prevIndex].src
+    modalImage.src = prevImageSrc
+  }
 }
 
 // Fonction pour gérer le bouton Suivant
 function handleNext() {
-  console.log('totonext')
+  const modalImage = document.querySelector('.lightboxImage')
+  const galleryItems = document.querySelectorAll('.gallery-item')
+  const currentImageSrc = modalImage.src
+
+  let currentIndex = -1
+  galleryItems.forEach((item, index) => {
+    if (item.src === currentImageSrc) {
+      currentIndex = index
+      return
+    }
+  })
+
+  if (currentIndex !== -1) {
+    const nextIndex = (currentIndex + 1) % galleryItems.length
+    const nextImageSrc = galleryItems[nextIndex].src
+    modalImage.src = nextImageSrc
+  }
 }
 
 // Fonction pour démarrer l'application
