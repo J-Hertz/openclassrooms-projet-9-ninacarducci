@@ -150,6 +150,10 @@ function createModal() {
   // Crée l'image de la modal
   const modalImage = document.createElement('img')
   modalImage.classList.add('lightboxImage', 'img-fluid')
+  modalImage.setAttribute(
+    'alt',
+    "Contenu de l'image affichée dans la modale au clique"
+  )
 
   // Crée le bouton suivant
   const nextButton = document.createElement('div')
