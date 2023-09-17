@@ -1,4 +1,3 @@
-// Fonction pour créer la galerie
 function createGallery() {
   const gallery = document.querySelector('.gallery')
   const galleryItems = document.querySelectorAll('.gallery-item')
@@ -37,7 +36,6 @@ function createGallery() {
   gallery.style.display = 'block'
 }
 
-// Fonction pour créer les boutons de filtre
 function createFilterButtons() {
   const gallery = document.querySelector('.gallery')
 
@@ -80,7 +78,6 @@ function createFilterButtons() {
   gallery.insertBefore(filterButtonUl, gallery.firstChild)
 }
 
-// Fonction utilitaire pour créer un bouton de filtre
 function createFilterButton(tag) {
   const filterButtonLi = document.createElement('li')
   filterButtonLi.classList.add('nav-item')
@@ -93,7 +90,6 @@ function createFilterButton(tag) {
   return filterButtonLi
 }
 
-// Fonction pour définir le bouton actif
 function setActiveButton(button) {
   const filterButtons = document.querySelectorAll('.nav-link')
   filterButtons.forEach((btn) => {
@@ -126,28 +122,23 @@ function filterImages(tag) {
   })
 }
 
-// Fonction pour créer la modale
 function createModal() {
   const gallery = document.querySelector('.gallery')
-  // Crée la modale
+
   const modal = document.createElement('div')
   modal.classList.add('modal')
   modal.style.display = 'none'
 
-  // Crée modal-content
   const modalContent = document.createElement('div')
   modalContent.classList.add('modal-content')
 
-  // Crée modal-body
   const modalBody = document.createElement('div')
   modalBody.classList.add('modal-body')
 
-  // Crée le bouton précédent
   const prevButton = document.createElement('div')
   prevButton.classList.add('mg-prev')
   prevButton.innerHTML = '<'
 
-  // Crée l'image de la modal
   const modalImage = document.createElement('img')
   modalImage.classList.add('lightboxImage', 'img-fluid')
   modalImage.setAttribute(
@@ -155,27 +146,23 @@ function createModal() {
     "Contenu de l'image affichée dans la modale au clique"
   )
 
-  // Crée le bouton suivant
   const nextButton = document.createElement('div')
   nextButton.classList.add('mg-next')
   nextButton.innerHTML = '>'
 
-  // Associez des événements click aux boutons
+  // Associe des événements click aux boutons
   nextButton.addEventListener('click', handleNext)
   prevButton.addEventListener('click', handlePrev)
 
-  // Ajoute les éléments à la modale
   modalBody.appendChild(prevButton)
   modalBody.appendChild(modalImage)
   modalBody.appendChild(nextButton)
   modalContent.appendChild(modalBody)
   modal.appendChild(modalContent)
 
-  // Ajoute la modale à la gallerie
   gallery.appendChild(modal)
 }
 
-// Fonction pour ouvrir la modale
 function openModal(src, alt) {
   const modal = document.querySelector('.modal')
   const modalImage = modal.querySelector('.lightboxImage')
@@ -188,7 +175,6 @@ function openModal(src, alt) {
   modal.style.display = 'flex'
 }
 
-// Fonction pour fermer la modal en cliquant en dehors de modal-content
 function closeModal() {
   const modal = document.querySelector('.modal')
   modal.style.display = 'none'
@@ -202,7 +188,6 @@ document.addEventListener('click', function (event) {
   }
 })
 
-// Fonction pour gérer le bouton Précédent
 function handlePrev() {
   const modalImage = document.querySelector('.lightboxImage')
   const galleryItems = document.querySelectorAll('.gallery-item')
@@ -218,7 +203,7 @@ function handlePrev() {
 
   if (currentIndex !== -1) {
     let prevIndex = currentIndex - 1
-    // Cherchez la première image précédente non masquée en bouclant vers l'arrière
+    // Cherche la première image précédente non masquée en bouclant vers l'arrière
     while (prevIndex >= 0) {
       if (galleryItems[prevIndex].style.display !== 'none') {
         const prevImageSrc = galleryItems[prevIndex].src
@@ -228,7 +213,7 @@ function handlePrev() {
       prevIndex--
     }
 
-    // Si aucune image précédente n'est trouvée, affichez la dernière image non masquée
+    // Si aucune image précédente n'est trouvée, affiche la dernière image non masquée
     prevIndex = galleryItems.length - 1
     while (prevIndex > currentIndex) {
       if (galleryItems[prevIndex].style.display !== 'none') {
@@ -241,7 +226,6 @@ function handlePrev() {
   }
 }
 
-// Fonction pour gérer le bouton Suivant
 function handleNext() {
   const modalImage = document.querySelector('.lightboxImage')
   const galleryItems = document.querySelectorAll('.gallery-item')
@@ -257,7 +241,7 @@ function handleNext() {
 
   if (currentIndex !== -1) {
     let nextIndex = currentIndex + 1
-    // Cherchez la première image suivante non masquée en bouclant vers l'avant
+    // Cherche la première image suivante non masquée en bouclant vers l'avant
     while (nextIndex < galleryItems.length) {
       if (galleryItems[nextIndex].style.display !== 'none') {
         const nextImageSrc = galleryItems[nextIndex].src
@@ -267,7 +251,7 @@ function handleNext() {
       nextIndex++
     }
 
-    // Si aucune image suivante n'est trouvée, affichez la première image non masquée
+    // Si aucune image suivante n'est trouvée, affiche la première image non masquée
     nextIndex = 0
     while (nextIndex < currentIndex) {
       if (galleryItems[nextIndex].style.display !== 'none') {
@@ -280,7 +264,6 @@ function handleNext() {
   }
 }
 
-// Fonction pour démarrer l'application
 function start() {
   createGallery()
   createFilterButtons()
