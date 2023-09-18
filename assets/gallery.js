@@ -39,18 +39,15 @@ function createGallery() {
 function createFilterButtons() {
   const gallery = document.querySelector('.gallery')
 
-  // Crée la liste des boutons de filtre
   const filterButtonUl = document.createElement('ul')
   filterButtonUl.classList.add('my-4', 'tags-bar', 'nav', 'nav-pills')
 
-  // Crée le bouton "Tous" et ajoutez-lui un écouteur d'événements
   const allButton = createFilterButton('Tous')
   allButton.addEventListener('click', () => {
     filterImages('Tous')
     setActiveButton(allButton)
   })
 
-  // Ajout les classes "active-tag" et "active" au bouton "Tous"
   allButton.querySelector('.nav-link').classList.add('active-tag', 'active')
 
   filterButtonUl.appendChild(allButton)
@@ -74,7 +71,6 @@ function createFilterButtons() {
     filterButtonUl.appendChild(button)
   })
 
-  // Insère la liste de boutons de filtre avant la div de la galerie
   gallery.insertBefore(filterButtonUl, gallery.firstChild)
 }
 
@@ -106,17 +102,17 @@ function filterImages(tag) {
     const itemTag = item.getAttribute('data-gallery-tag')
     if (tag === 'Tous' || tag === itemTag) {
       item.style.display = 'block'
-      item.classList.remove('display-none') // Supprime la classe display-none de l'image
+      item.classList.remove('display-none')
       const itemColumn = item.closest('.item-column')
       if (itemColumn) {
-        itemColumn.classList.remove('display-none') // Supprime la classe display-none de la div parente
+        itemColumn.classList.remove('display-none')
       }
     } else {
       item.style.display = 'none'
-      item.classList.add('display-none') // Ajoute la classe display-none à l'image
+      item.classList.add('display-none')
       const itemColumn = item.closest('.item-column')
       if (itemColumn) {
-        itemColumn.classList.add('display-none') // Ajoute la classe display-none à la div parente
+        itemColumn.classList.add('display-none')
       }
     }
   })
@@ -171,7 +167,6 @@ function openModal(src, alt) {
   modalImage.src = src
   modalImage.alt = alt
 
-  // Affiche la modale
   modal.style.display = 'flex'
 }
 
